@@ -1,15 +1,6 @@
 {
   "version": 2,
-  "name": "backend",
+  "name": "project_deployment",
   "builds": [{ "src": "index.js", "use": "@vercel/node" }],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.js",
-      "methods": ["GET", "POST"], // Specify the HTTP methods you want to increase the timeout for
-      "headers": {
-        "x-vercel-idle-timeout": "600" // Set the timeout value in seconds
-      }
-    }
-  ]
+  "routes": [{ "src": "/(.*)", "dest": "/index.js" }]
 }
