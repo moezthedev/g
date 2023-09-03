@@ -15,6 +15,9 @@ app.use(cookieParser())
 app.use("/login",loginRouter)
 app.use("/register",registerRouter)
 app.use("/logout",logoutRouter)
+app.get("/",(req,res)=>{
+    res.send(<h1>Working</h1>)
+})
 //Listen
 
 app.listen(process.env.PORT||5000,()=>{
