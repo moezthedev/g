@@ -4,6 +4,7 @@ import {logoutRouter} from "./routes/logout.js"
 import {registerRouter} from "./routes/register.js"
 import {connectMongoDB} from "./data/mongodb.js"
 import cookieParser from "cookie-parser";
+import cors from "cors"
 const app = express();
 
 //Connect Mongodb
@@ -11,6 +12,7 @@ connectMongoDB()
 //middlewares
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors())
 app.use(cookieParser())
 app.use("/login",loginRouter)
 app.use("/register",registerRouter)
