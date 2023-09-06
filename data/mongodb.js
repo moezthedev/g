@@ -1,11 +1,14 @@
 
 import mongoose from "mongoose";
 export const connectMongoDB = ()=>{
-    mongoose.connect("mongodb://0.0.0.0:27017/",{
-        dbName:"users",
-        useNewUrlParser: true,
-  useUnifiedTopology: true,
+    const uri = "mongodb+srv://moizahsan:scJ3m-6A!gtX*35@cluster0.nqrlq7s.mongodb.net/?retryWrites=true&w=majority"
+    mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+      console.log("Connected to MongoDB Atlas");
     })
-.then(()=>{console.log("DB connected")})
-.catch((err)=>{console.log(err)})}
+    .catch((err) => {
+      console.error("Error connecting to MongoDB Atlas:", err);
+    });
+  
+}
 

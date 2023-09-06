@@ -8,7 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "start": "node index.js"
-    
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +20,7 @@
     "firebase-admin": "^11.10.1",
     "firebase-functions": "^4.4.1",
     "jsonwebtoken": "^9.0.1",
+    "mongodb": "^6.0.0",
     "mongoose": "^7.4.5"
   },
   "engines": {
