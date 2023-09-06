@@ -4,9 +4,11 @@ import {logoutRouter} from "./routes/logout.js"
 import {registerRouter} from "./routes/register.js"
 import {connectMongoDB} from "./data/mongodb.js"
 import cookieParser from "cookie-parser";
-import functions from "firebase-functions"
+import {config} from "dotenv"
 const app = express();
-
+config({
+    path:"config.env"
+})
 //Connect Mongodb
 connectMongoDB()
 //middlewares
@@ -21,6 +23,6 @@ app.get("/",(req,res)=>{
 })
 //Listen
 
-app.listen(5000,()=>{
-    console.log("Server is running on port 5000");
+app.listen(process.env.PORT || 5000 ,()=>{
+    console.log(`Server is running on port ${process.env.PORT}`);
 })
