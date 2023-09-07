@@ -6,8 +6,8 @@ import axios from 'axios';
 import { URLSearchParams } from 'url';
 export const OpenAi = (req,res)=>{
     const encodedParams = new URLSearchParams();
-    const text = req.body.text
- 
+    const text = req.params.text
+ console.log(text,"text");
 encodedParams.set('text', text);
 
 const options = {
