@@ -7,6 +7,7 @@ import { URLSearchParams } from 'url';
 export const OpenAi = (req,res)=>{
     const encodedParams = new URLSearchParams();
     const text = req.body.text
+ 
 encodedParams.set('text', text);
 
 const options = {
@@ -23,6 +24,9 @@ const options = {
 async function makeApiRequest() {
   try {
     const response = await axios.request(options);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.json({"data":response.data})
     console.log(response.data);
   } catch (error) {
