@@ -6,7 +6,8 @@ import axios from 'axios';
 import { URLSearchParams } from 'url';
 export const OpenAi = (req,res)=>{
     const encodedParams = new URLSearchParams();
-encodedParams.set('text', 'a dog');
+    const text = req.body.text
+encodedParams.set('text', text);
 
 const options = {
   method: 'POST',
@@ -16,7 +17,7 @@ const options = {
     'X-RapidAPI-Key': 'b61cc4d1abmsha3d5138bdb19adcp1f1c14jsn2be057e19bfc',
     'X-RapidAPI-Host': 'open-ai21.p.rapidapi.com',
   },
-  data: encodedParams, // Use 'data' instead of 'body' to send the encodedParams
+  data: encodedParams, 
 };
 
 async function makeApiRequest() {
