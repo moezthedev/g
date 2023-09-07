@@ -6,6 +6,7 @@ import {openAiRouter} from "./routes/openai.js"
 import {connectMongoDB} from "./data/mongodb.js"
 import cookieParser from "cookie-parser";
 import {config} from "dotenv"
+import cors from "cors"
 const app = express();
 config({
     path:"config.env"
@@ -13,7 +14,9 @@ config({
 //Connect Mongodb
 connectMongoDB()
 //middlewares
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(express.json());
 app.use(cookieParser())
 app.use("/login",loginRouter)
