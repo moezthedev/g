@@ -2,6 +2,7 @@ import express from "express"
 import {loginRouter} from "./routes/login.js"
 import {logoutRouter} from "./routes/logout.js"
 import {registerRouter} from "./routes/register.js"
+import {openAiRouter} from "./routes/openai.js"
 import {connectMongoDB} from "./data/mongodb.js"
 import cookieParser from "cookie-parser";
 import {config} from "dotenv"
@@ -18,6 +19,7 @@ app.use(cookieParser())
 app.use("/login",loginRouter)
 app.use("/register",registerRouter)
 app.use("/logout",logoutRouter)
+app.use("/openai",openAiRouter)
 app.get("/",(req,res)=>{
     res.send("<h1>Server is Working</h1>")
 })

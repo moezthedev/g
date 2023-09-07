@@ -2,6 +2,36 @@
 import {userModel} from "../models/user.js"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
+import axios from 'axios';
+import { URLSearchParams } from 'url';
+export const OpenAi = (req,res)=>{
+    const encodedParams = new URLSearchParams();
+encodedParams.set('text', 'a dog');
+
+const options = {
+  method: 'POST',
+  url: 'https://open-ai21.p.rapidapi.com/texttoimage2',
+  headers: {
+    'content-type': 'application/x-www-form-urlencoded',
+    'X-RapidAPI-Key': 'b61cc4d1abmsha3d5138bdb19adcp1f1c14jsn2be057e19bfc',
+    'X-RapidAPI-Host': 'open-ai21.p.rapidapi.com',
+  },
+  data: encodedParams, // Use 'data' instead of 'body' to send the encodedParams
+};
+
+async function makeApiRequest() {
+  try {
+    const response = await axios.request(options);
+    res.json({"data":response.data})
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+    res.json({"Error":"true"})
+  }
+}
+makeApiRequest();
+
+}
 export const register =async (req,res)=>{
     const {name,email,password} = req.body
 const hashedPassword = await bcrypt.hash(password,10);
